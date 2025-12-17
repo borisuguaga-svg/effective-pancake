@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(135deg, #1a0b2e, #2d1b4e, #3c2964);
+  color: #f0e6ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Левая часть с текстом и ссылками */
+.left-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 80px 60px 40px;
+  max-width: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #a855f7;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.7);
+  letter-spacing: 2px;
+}
+
+.bio-text {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  color: #d8b4fe;
+}
+
+.bio-text p {
+  margin-bottom: 12px;
+}
+
+/* Ссылки */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin-top: 10px;
+}
+
+.link {
+  padding: 18px 25px;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 12px;
+  text-decoration: none;
+  color: #e9d5ff;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.link:hover {
+  background: rgba(168, 85, 247, 0.2);
+  transform: translateX(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.link-text {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #c084fc;
+  font-size: 1.2rem;
+}
+
+.link-url {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  word-break: break-all;
+}
+
+/* Правая часть с растянутой картинкой */
+.right-side {
+  flex: 1;
+  max-width: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.anime-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #2d1b4e; /* Фон на случай если картинка не загрузится */
+
+  /* Окантовка картинки */
+  border: 3px solid rgba(168, 85, 247, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+/* Эффекты частиц */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(168, 85, 247, 0.5);
+  border-radius: 50%;
+  animation: float 15s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100px, -100px);
+    opacity: 0;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-side, .right-side {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .left-side {
+    padding: 60px 40px 30px;
+    min-height: 50vh;
+  }
+
+  .right-side {
+    min-height: 50vh;
+    order: -1;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .bio-text {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .links {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .left-side {
+    padding: 50px 30px 25px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .bio-text {
+    font-size: 1.3rem;
+  }
+
+  .link {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+
+  .link-text {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-side {
+    padding: 40px 20px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .bio-text {
+    font-size: 1.1rem;
+  }
+
+  .right-side {
+    min-height: 40vh;
+  }
+}

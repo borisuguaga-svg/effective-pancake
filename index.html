@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lo-V1's Bio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Эффект частиц -->
+<div class="particles" id="particles"></div>
+
+<div class="container">
+  <!-- Левая часть - текст и ссылки -->
+  <div class="left-side">
+    <h1 class="title">Lo-V1's bio</h1>
+
+    <div class="bio-text">
+      <p>Ordinary dude from Russia who's into something strange.</p>
+      <p>Just living life in my own weird way.</p>
+    </div>
+
+    <div class="links">
+      <a href="https://steamcommunity.com/profiles/76561199592535275/" target="_blank" class="link">
+        <div class="link-text">Steam Profile</div>
+        <div class="link-url">https://steamcommunity.com/profiles/76561199592535275/</div>
+      </a>
+
+      <a href="https://t.me/lLo_V1l" target="_blank" class="link">
+        <div class="link-text">Telegram</div>
+        <div class="link-url">@lLo_V1l</div>
+      </a>
+
+      <a href="https://discord.com/users/lovi0052" target="_blank" class="link">
+        <div class="link-text">Discord</div>
+        <div class="link-url">lovi0052</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Правая часть - растянутая картинка -->
+  <div class="right-side">
+    <div class="anime-image" id="animeImage"></div>
+  </div>
+</div>
+
+<script>
+  // Создание эффекта частиц
+  document.addEventListener('DOMContentLoaded', function() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 60;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+
+      // Случайная позиция
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      particle.style.left = `${posX}%`;
+      particle.style.top = `${posY}%`;
+
+      // Случайный размер
+      const size = Math.random() * 2 + 1;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+
+      // Случайная прозрачность
+      const opacity = Math.random() * 0.4 + 0.1;
+      particle.style.opacity = opacity;
+
+      // Случайная скорость анимации
+      const duration = Math.random() * 10 + 10;
+      particle.style.animation = `float ${duration}s infinite linear`;
+
+      // Случайная задержка
+      const delay = Math.random() * 5;
+      particle.style.animationDelay = `${delay}s`;
+
+      particlesContainer.appendChild(particle);
+    }
+
+    // Загрузка основной картинки
+    const mainImage = document.getElementById('animeImage');
+    const mainImg = new Image();
+    const mainImageUrl = 'https://i.pinimg.com/736x/ec/a7/63/eca763855f9258bcb5a5e0dece45e320.jpg';
+    const backupImage = 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW5pbWUlMjBnaXJsfGVufDB8fDB8fHww&auto=format&fit=crop&w=1600&q=80';
+
+    mainImg.onload = function() {
+      console.log('Основное изображение загружено');
+      mainImage.style.backgroundImage = `url('${mainImageUrl}')`;
+    };
+
+    mainImg.onerror = function() {
+      console.log('Основное изображение не загружено, использую резервное');
+      mainImage.style.backgroundImage = `url('${backupImage}')`;
+    };
+
+    mainImg.src = mainImageUrl;
+  });
+</script>
+</body>
+</html>
